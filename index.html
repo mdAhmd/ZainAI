@@ -7,20 +7,20 @@
 <title>Zain AI — by Ahmed</title>
 <style>
 :root{
-  color-scheme:light;--bg:#ffffff;--panel:#ffffff;--panel2:#f7f7f8;--ink:#252525;
-  --muted:#777777;--line:#e8e8e8;--accent:#10a37f;--accent2:#10a37f;
-  --user:#f4f4f4;--userInk:#252525;--shadow:0 8px 28px #00000008
+  color-scheme:dark;--bg:#07131f;--panel:#0e1b2c;--panel2:#121f2d;--ink:#edf3ff;
+  --muted:#9aaac7;--line:#243548;--accent:#6ae0bb;--accent2:#7aa8ff;
+  --user:#1a2638;--userInk:#edf3ff;--shadow:0 8px 28px rgba(0,0,0,.3)
 }
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(900px 600px at 10% -15%,#18345566,transparent 65%),radial-gradient(800px 600px at 100% 100%,#134b3d44,transparent 60%),var(--bg);color:var(--ink);font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial}
+body{margin:0;min-height:100vh;background:radial-gradient(900px 600px at 10% -15%,#18345566,transparent 65%),radial-gradient(800px 600px at 100% 100%,#134b3d44,transparent 60%),var(--bg);color:var(--ink)}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .app{width:min(1100px,100%);height:min(900px,100dvh);min-height:560px;margin:0 auto;padding:18px;display:grid;grid-template-rows:auto 1fr auto;gap:12px}
 header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 6px 16px;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:12px;min-width:0}
-.logo{width:44px;height:44px;border-radius:15px;background:linear-gradient(135deg,#5ce1b5,#638dff);display:grid;place-items:center;color:#081421;font-size:23px;font-weight:900;box-shadow:0 8px 26px #3ed9ad33}
-h1{font-size:19px;line-height:1.2;margin:0;letter-spacing:-.4px}
+.logo{width:44px;height:44px;border-radius:15px;background:linear-gradient(135deg,#5ce1b5,#638dff);display:grid;place-items:center;color:#081421;font-size:23px;font-weight:900;box-shadow:0 8px 26px rgba(92,225,181,.32)}
+.brand h1{font-size:19px;line-height:1.2;margin:0;letter-spacing:-.4px}
 .brand p{margin:4px 0 0;color:var(--muted);font-size:12px}
 .tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .pill,.icon-btn{border:1px solid var(--line);border-radius:12px;background:#111b2b;color:var(--ink);padding:9px 12px;font-weight:650}
@@ -29,7 +29,7 @@ h1{font-size:19px;line-height:1.2;margin:0;letter-spacing:-.4px}
 .icon-btn{min-width:40px}
 .chat{overflow:auto;min-height:0;padding:18px 8px 12px;display:flex;flex-direction:column;gap:18px;scroll-behavior:smooth}
 .welcome{margin:auto;max-width:680px;text-align:center;padding:28px 16px}
-.welcome .orb{margin:0 auto 18px;width:76px;height:76px;border-radius:25px;background:linear-gradient(145deg,#173c48,#1d2c53);border:1px solid #34506c;display:grid;place-items:center;font-size:35px;box-shadow:0 0 55px #50d9b322}
+.welcome .orb{margin:0 auto 18px;width:76px;height:76px;border-radius:25px;background:linear-gradient(145deg,#173c48,#1d2c53);border:1px solid #34506c;display:grid;place-items:center;font-size:35px;box-shadow:0 18px 38px rgba(9,17,31,.42)}
 .welcome h2{font-size:clamp(25px,4vw,38px);line-height:1.15;margin:0 0 12px;letter-spacing:-1px}
 .welcome p{color:var(--muted);max-width:540px;margin:0 auto 22px}
 .suggestions{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
@@ -75,7 +75,7 @@ h1{font-size:19px;line-height:1.2;margin:0;letter-spacing:-.4px}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
 @keyframes blink{0%,80%,100%{opacity:.2;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
 @keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:650px){.app{padding:8px;gap:8px;min-height:100dvh;height:100dvh}.tools{gap:5px}.pill{padding:7px 9px;font-size:12px}.brand p{display:none}h1{font-size:16px}.logo{width:38px;height:38px}.chat{padding:12px 2px}.content{max-width:88%}.bubble{padding:11px 13px}.composer-wrap{border-radius:16px}.composer-bottom{font-size:10px}}
+@media(max-width:650px){.app{padding:8px;gap:8px;min-height:100dvh;height:100dvh}.tools{gap:5px}.pill{padding:7px 9px;font-size:12px}.brand p{display:none}h1{font-size:16px}.logo{width:38px;height:38px}.composer{grid-template-columns:auto 1fr auto}.chat{padding:12px 4px 10px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -89,7 +89,7 @@ h1{font-size:19px;line-height:1.2;margin:0;letter-spacing:-.4px}
     <div class="tools">
       <button class="pill active" id="modeBtn" title="Switch answer style">✨ Smart</button>
       <button class="pill" id="voiceBtn" aria-pressed="false" title="Read answers aloud. Off by default">🔇 Voice off</button>
-      <button class="icon-btn" id="themeBtn" title="Switch theme" aria-label="Switch theme">☼</button>
+      <button class="icon-btn" id="themeBtn" title="Switch theme" aria-label="Switch theme">☾</button>
       <button class="icon-btn" id="clearBtn" title="Clear chat" aria-label="Clear chat">⌫</button>
     </div>
   </header>
@@ -135,7 +135,7 @@ const $ = (selector, root=document) => root.querySelector(selector);
 const chat = $('#chat'), welcome = $('#welcome'), input = $('#userInput');
 const sendBtn = $('#sendBtn'), statusEl = $('#status'), voiceBtn = $('#voiceBtn');
 const STORAGE_KEY = 'zain-chat-v2';
-let voiceEnabled = false; // Deliberately OFF. Speech only happens after user enables it.
+let voiceEnabled = false;
 let darkTheme = true, smartMode = true, busy = false;
 let conversation = [];
 let lastQuestion = '';
@@ -192,7 +192,6 @@ function addMessage(role, text, sources=[]){
   return row;
 }
 function formatAnswer(text){
-  // Lightweight safe formatting: escape first, then support paragraphs, lists, and bold.
   let safe=escapeHTML(text);
   safe=safe.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
   safe=safe.replace(/`([^`]+)`/g,'<code>$1</code>');
@@ -231,15 +230,15 @@ function setVoice(enabled){
 voiceBtn.addEventListener('click',()=>setVoice(!voiceEnabled));
 $('#themeBtn').addEventListener('click',()=>{
   darkTheme=!darkTheme;
-  document.documentElement.style.colorScheme=darkTheme?'light':'dark';
-  document.body.style.setProperty('--bg',darkTheme?'#ffffff':'#171717');
-  document.body.style.setProperty('--panel',darkTheme?'#ffffff':'#212121');
-  document.body.style.setProperty('--ink',darkTheme?'#252525':'#eeeeee');
-  document.body.style.setProperty('--muted',darkTheme?'#777777':'#aaaaaa');
-  document.body.style.setProperty('--line',darkTheme?'#e8e8e8':'#3b3b3b');
-  document.body.style.setProperty('--user',darkTheme?'#f4f4f4':'#303030');
-  document.body.style.setProperty('--userInk',darkTheme?'#252525':'#eeeeee');
-  document.body.style.background=darkTheme?'#ffffff':'#171717';
+  document.documentElement.style.colorScheme=darkTheme?'dark':'light';
+  document.body.style.setProperty('--bg',darkTheme?'#07131f':'#ffffff');
+  document.body.style.setProperty('--panel',darkTheme?'#0e1b2c':'#ffffff');
+  document.body.style.setProperty('--ink',darkTheme?'#edf3ff':'#252525');
+  document.body.style.setProperty('--muted',darkTheme?'#9aaac7':'#777777');
+  document.body.style.setProperty('--line',darkTheme?'#243548':'#e8e8e8');
+  document.body.style.setProperty('--user',darkTheme?'#1a2638':'#f4f4f4');
+  document.body.style.setProperty('--userInk',darkTheme?'#edf3ff':'#252525');
+  document.body.style.background=darkTheme?'radial-gradient(900px 600px at 10% -15%,#18345566,transparent 65%),radial-gradient(800px 600px at 100% 100%,#134b3d44,transparent 60%),#07131f':'radial-gradient(900px 600px at 10% -15%,#18345566,transparent 65%),radial-gradient(800px 600px at 100% 100%,#134b3d44,transparent 60%),#ffffff';
   $('#themeBtn').textContent=darkTheme?'☾':'☼';
 });
 $('#modeBtn').addEventListener('click',()=>{
@@ -286,15 +285,15 @@ function isGreeting(q){return /^(hi|hello|hey|salaam|assalamualaikum|good mornin
 function localResponse(q){
   const lower=q.toLowerCase();
   if(isGreeting(q))return "Hey! I'm Zain. Send me a question and I'll help you break it down. Voice playback is off unless you turn it on, because unsolicited robot narration is a special kind of nuisance.";
-  if(/who are you|what are you/.test(lower))return "I'm Zain, a browser-based assistant interface built by Ahmed. I can search public sources and summarize what they say. Important distinction: this version is not connected to a real LLM API, so it cannot reliably reason like ChatGPT or remember a rich conversation. A slick interface is not a brain, despite what startup landing pages suggest.";
-  if(/improve.*english|communication|articulation/.test(lower))return "A practical communication routine:\n\n1. Read one good article aloud for 10 minutes.\n2. Summarize it in your own words for 2 minutes.\n3. Record yourself and notice filler words, unclear phrasing, and rushed sentences.\n4. Learn phrases in context, not isolated vocabulary lists.\n5. Repeat the same summary more clearly.\n\nClarity beats a fake accent. Every time.";
+  if(/who are you|what are you/.test(lower))return "I'm Zain, a browser-based assistant interface built by Ahmed. I can search public sources and summarize what they say. Important distinction: this version does not use a full underlying language-model API yet; it works as a browser app that retrieves public info and formats it for you.";
+  if(/improve.*english|communication|articulation/.test(lower))return "A practical communication routine:\n\n1. Read one good article aloud for 10 minutes.\n2. Summarize it in your own words for 2 minutes.\n3. Write one paragraph, then revise for clarity and rhythm.\n4. Read it aloud again and simplify any dense lines.\n\nThat repetition trains both comprehension and fluency.";
   return null;
 }
 async function generateAnswer(query){
   const direct=localResponse(query);if(direct)return {text:direct,sources:[]};
   setStatus('Searching public sources…');
   const results=await searchWeb(query);
-  if(!results.length)return {text:'I could not retrieve useful public search results for that question. Try making the topic more specific. Also, this browser-only version does not have an AI model API behind it, so it cannot invent a well-reasoned answer when search fails.',sources:[]};
+  if(!results.length)return {text:'I could not retrieve useful public search results for that question. Try making the topic more specific. Also, this browser-only version does not have an AI model API connected yet, so answers are limited to public web summaries.',sources:[]};
   const best=results.slice(0,smartMode?4:2);
   let answer='Here is what the public search results say. Treat this as a quick source-based summary, not a fully reasoned AI answer:\n\n';
   best.forEach((r,i)=>{answer+=`**${i+1}. ${r.title}**\n${r.snippet||'The page is available through the source link.'}\n\n`});
@@ -309,7 +308,6 @@ async function ask(query,regenerate=false){
   try{
     const result=await generateAnswer(query);typing.remove();
     addMessage('bot',result.text,result.sources);
-    // Autoplay is intentionally gated by the user's explicit Voice on setting.
     if(voiceEnabled)speak(result.text);
   }catch(err){
     typing.remove();addMessage('bot','Search failed: '+(err?.message||'unknown error')+'. Check your connection and try again.');
@@ -319,7 +317,6 @@ $('#chatForm').addEventListener('submit',e=>{e.preventDefault();const q=input.va
 input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('#chatForm').requestSubmit()}});
 input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,180)+'px'});
 
-// Speech recognition is user-started and never auto-submits until the user chooses "Use transcript".
 const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
 const micModal=$('#micModal');
 $('#micBtn').addEventListener('click',()=>{
@@ -348,7 +345,6 @@ $('#finishMic').addEventListener('click',()=>{
 });
 micModal.addEventListener('click',e=>{if(e.target===micModal){stopRecognition();micModal.classList.add('hidden')}});
 
-// Restore recent conversation safely.
 try{
   const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
   if(Array.isArray(saved)&&saved.length){
@@ -357,6 +353,8 @@ try{
   }
 }catch{}
 setVoice(false);
+document.documentElement.style.colorScheme='dark';
+$('#themeBtn').textContent='☾';
 </script>
 </body>
 </html>
